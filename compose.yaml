@@ -1,0 +1,32 @@
+services:
+  tapo-watch:
+    build:
+      context: .
+    image: tapo-watch:local
+    init: true
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        format: raw
+    environment:
+      TZ: Europe/Rome
+    command: ["telegram", "--output", "/data/captures", "--cooldown", "10"]
+    volumes:
+      - captures:/data/captures
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=64m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    stop_signal: SIGINT
+    stop_grace_period: 120s
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  captures:

@@ -1,0 +1,8 @@
+# Default-deny build context: never send credentials, captures, Git or tests.
+**
+!pyproject.toml
+!README.md
+!LICENSE
+!src/
+!src/tapo_camera/
+!src/tapo_camera/*.py

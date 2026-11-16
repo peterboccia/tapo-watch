@@ -1,3 +1,18 @@
+# TapoWatch local configuration and private media
+.env*
+!.env.example
+captures/
+tests/.telegram-data-*/
+*.jpg
+*.jpeg
+*.mp4
+*.jpg.tmp
+*.jpeg.tmp
+*.mp4.tmp
+# Recorder metadata: HHMMSS_microseconds_unique-id.json, in any output folder.
+??????_??????_*.json
+??????_??????_*.json.tmp
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
